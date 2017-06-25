@@ -1,3 +1,7 @@
+=== 8.3.0 / 2017-06-25
+
+* Support ruby-2.0 to 2.4 with binary windows gems.
+
 === 8.2.2 / 2016-01-21
 
 * Add ruby-2.2 and 2.3 to binary windows gems.

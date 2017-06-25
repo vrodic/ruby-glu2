@@ -24,5 +24,5 @@ module GLU
 end
 
 module Glu
-  VERSION = "8.2.2"
+  VERSION = "8.3.0"
 end
