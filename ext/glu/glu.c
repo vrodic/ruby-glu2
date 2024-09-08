@@ -636,7 +636,7 @@ t_vertex(data)
 void* data;
 {
   TESS_CALLBACK_COMMON
-  rb_funcall(rb_ary_entry(tdata->t_ref, TESS_VERTEX), callId, 1, data);
+  rb_funcall(rb_ary_entry(tdata->t_ref, TESS_VERTEX), callId, 1, (VALUE) data);
 }
 static void CALLBACK
 t_end()
@@ -657,7 +657,8 @@ GLenum type;
 void* user_data;
 {
   TESS_CALLBACK_COMMON
-  rb_funcall(rb_ary_entry(tdata->t_ref, TESS_BEGIN_DATA), callId, 2, INT2NUM(type), user_data);
+  // TODO error_data was not cast before 
+  rb_funcall(rb_ary_entry(tdata->t_ref, TESS_BEGIN_DATA), callId, 2, INT2NUM(type), (VALUE) user_data);
 }
 static void CALLBACK
 t_edgeFlag_data(flag, user_data)
@@ -665,7 +666,8 @@ GLboolean flag;
 void* user_data;
 {
   TESS_CALLBACK_COMMON
-  rb_funcall(rb_ary_entry(tdata->t_ref, TESS_EDGE_FLAG_DATA), callId, 2, GLBOOL2RUBY(flag), user_data);
+  // TODO error_data was not cast before 
+  rb_funcall(rb_ary_entry(tdata->t_ref, TESS_EDGE_FLAG_DATA), callId, 2, GLBOOL2RUBY(flag),(VALUE) user_data);
 }
 static void CALLBACK
 t_vertex_data(data, user_data)
@@ -673,14 +675,16 @@ void* data;
 void* user_data;
 {
   TESS_CALLBACK_COMMON
-  rb_funcall(rb_ary_entry(tdata->t_ref, TESS_VERTEX_DATA), callId, 2, data, user_data);
+  // TODO error_data was not cast before 
+  rb_funcall(rb_ary_entry(tdata->t_ref, TESS_VERTEX_DATA), callId, 2, (VALUE) data, (VALUE) user_data);
 }
 static void CALLBACK
 t_end_data(user_data)
 void* user_data;
 {
   TESS_CALLBACK_COMMON
-  rb_funcall(rb_ary_entry(tdata->t_ref, TESS_END_DATA), callId, 1, user_data);
+  // TODO error_data was not cast before 
+  rb_funcall(rb_ary_entry(tdata->t_ref, TESS_END_DATA), callId, 1, (VALUE) user_data);
 }
 static void CALLBACK
 t_error_data(errorno, user_data)
@@ -688,7 +692,8 @@ GLenum errorno;
 void* user_data;
 {
   TESS_CALLBACK_COMMON
-  rb_funcall(rb_ary_entry(tdata->t_ref, TESS_ERROR_DATA), callId, 2, INT2NUM(errorno), user_data);
+  // TODO error_data was not cast before 
+  rb_funcall(rb_ary_entry(tdata->t_ref, TESS_ERROR_DATA), callId, 2, INT2NUM(errorno), (VALUE) user_data);
 }
 
 static void CALLBACK

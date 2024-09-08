@@ -1,6 +1,6 @@
 begin
   RUBY_VERSION =~ /(\d+.\d+)/
-  require "glu/#{$1}/glu"
+  require "glu/#{Regexp.last_match(1)}/glu"
 rescue LoadError
   require 'glu/glu'
 end
@@ -12,17 +12,17 @@ module GLU
   include Glu
 
   Glu.constants.each do |cn|
-    n = cn.to_s.sub(/^GLU_/,'')
-    const_set( n, Glu.const_get( cn ) )
+    n = cn.to_s.sub(/^GLU_/, '')
+    const_set(n, Glu.const_get(cn))
   end
 
-  Glu.methods( false ).each do |mn|
-    n = mn.to_s.sub(/^glu/,'')
-    alias_method( n, mn )
-    public( n )
+  Glu.methods(false).each do |mn|
+    n = mn.to_s.sub(/^glu/, '')
+    alias_method(n, mn)
+    public(n)
   end
 end
 
-module Glu
-  VERSION = "8.3.0"
+module Glu2
+  VERSION = '8.4.0'
 end

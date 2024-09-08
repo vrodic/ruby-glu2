@@ -1,4 +1,5 @@
-= glu
+= glu2
+main :: https://github.com/vrodic/ruby-glu2
 
 == Description
 
@@ -8,8 +9,9 @@ Glu bindings for the opengl gem, split into a separate gem because of Glu deprec
 
 (The MIT License)
 
-Copyright (c) Blaž Hrastnik (current maintainer)
-Copyright (c) Eric Hodel    (current maintainer)
+Copyright (c) Vedran Rodic    (current maintainer)
+Copyright (c) Blaž Hrastnik (previous maintainer)
+Copyright (c) Eric Hodel    (previous maintainer)
 Copyright (c) Alain Hoang   (previous maintainer)
 Copyright (c) Jan Dvorak    (contributor)
 Copyright (c) Minh Thu Vo   (contributor)

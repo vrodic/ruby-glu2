@@ -1,5 +1,4 @@
-# -*- coding: UTF-8 -*-
-#-*-ruby-*-
+# -*-ruby-*-
 #
 # Copyright (C) 2006 John M. Gabriele <jmg3000@gmail.com>
 # Copyright (C) Eric Hodel <drbrain@segment7.net>
@@ -18,9 +17,10 @@
 require 'hoe'
 require 'rake/extensiontask'
 
-hoe = Hoe.spec 'glu' do
+hoe = Hoe.spec 'glu2' do
+  developer 'Vedran Rodic', 'vrodic@gmail.com'
   developer 'Eric Hodel', 'drbrain@segment7.net'
-  developer 'Lars Kanis',  ''
+  developer 'Lars Kanis', ''
   developer 'Blaž Hrastnik', 'blaz.hrast@gmail.com'
   developer 'Alain Hoang', ''
   developer 'Jan Dvorak',  ''
@@ -35,8 +35,8 @@ hoe = Hoe.spec 'glu' do
   extra_dev_deps << ['rake-compiler-dock', '~> 0.6.0']
 
   self.spec_extras = {
-    :extensions            => %w[ext/glu/extconf.rb],
-    :required_ruby_version => '>= 1.9.2',
+    extensions: %w[ext/glu/extconf.rb],
+    required_ruby_version: '>= 1.9.2'
   }
 end
 
@@ -44,7 +44,7 @@ Rake::ExtensionTask.new 'glu', hoe.spec do |ext|
   ext.lib_dir = 'lib/glu'
 
   ext.cross_compile = true
-  ext.cross_platform = ['x86-mingw32', 'x64-mingw32']
+  ext.cross_platform = %w[x86-mingw32 x64-mingw32]
 end
 
 # To reduce the gem file size strip mingw32 dlls before packaging
@@ -58,12 +58,12 @@ ENV['RUBY_CC_VERSION'].to_s.split(':').each do |ruby_version|
   end
 end
 
-desc "Build windows binary gems per rake-compiler-dock."
-task "gem:windows" do
-  require "rake_compiler_dock"
-  RakeCompilerDock.sh <<-EOT
+desc 'Build windows binary gems per rake-compiler-dock.'
+task 'gem:windows' do
+  require 'rake_compiler_dock'
+  RakeCompilerDock.sh <<-SHELL
     rake cross native gem MAKE='nice make -j`nproc`'
-  EOT
+  SHELL
 end
 
-task :test => :compile
+task test: :compile
